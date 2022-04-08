@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_to_do/screens/add_task_screen.dart';
 import 'package:flutter_to_do/widgets/widgets.dart';
+
 class TaskScreen extends StatelessWidget {
   const TaskScreen({Key? key}) : super(key: key);
 
@@ -12,7 +14,10 @@ class TaskScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+              context: context, builder: (BuildContext context) => AddTask());
+        },
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
