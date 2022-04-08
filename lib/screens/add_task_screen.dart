@@ -37,7 +37,7 @@ class AddTask extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              OutlinedButton(onPressed: (){}, child: Text('Add', style: TextStyle(color: Colors.white),))
+              //OutlinedButton(onPressed: (){}, child: Text('Add', style: TextStyle(color: Colors.white),))
             ],
           ),
         ),
