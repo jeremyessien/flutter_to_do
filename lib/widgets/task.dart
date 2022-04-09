@@ -9,8 +9,7 @@ class TaskList extends StatefulWidget {
 
 class _TaskListState extends State<TaskList> {
   bool isChecked = false;
-
-  void checkBoxCallBack(bool? checkBoxState) {
+  void toggleCheckBoxState(bool? checkBoxState) {
     setState(() {
       isChecked = checkBoxState!;
     });
@@ -26,7 +25,7 @@ class _TaskListState extends State<TaskList> {
             style: TextStyle(
                 decoration: isChecked ? TextDecoration.lineThrough : null),
           ),
-          trailing: TaskCheckBox(isChecked, checkBoxCallBack),
+          trailing: TaskCheckBox(isChecked, toggleCheckBoxState),
         ),
         ListTile(
           leading: Text(
@@ -34,7 +33,7 @@ class _TaskListState extends State<TaskList> {
             style: TextStyle(
                 decoration: isChecked ? TextDecoration.lineThrough : null),
           ),
-          trailing: TaskCheckBox(isChecked, checkBoxCallBack),
+          trailing: TaskCheckBox(isChecked, toggleCheckBoxState),
         ),
         ListTile(
           leading: Text(
@@ -42,7 +41,7 @@ class _TaskListState extends State<TaskList> {
             style: TextStyle(
                 decoration: isChecked ? TextDecoration.lineThrough : null),
           ),
-          trailing: TaskCheckBox(isChecked, checkBoxCallBack),
+          trailing: TaskCheckBox(isChecked, toggleCheckBoxState),
         ),
       ],
     );
@@ -50,17 +49,17 @@ class _TaskListState extends State<TaskList> {
 }
 
 class TaskCheckBox extends StatelessWidget {
-  final bool checkBoxState;
-  final Function(bool?) toggleCheckBoxState;
+  final bool isChecked;
+  final Function(bool?) checkBoxCallBack;
 
-  const TaskCheckBox(this.checkBoxState, this.toggleCheckBoxState);
+  const TaskCheckBox(this.isChecked, this.checkBoxCallBack);
 
   @override
   Widget build(BuildContext context) {
     return Checkbox(
       activeColor: Colors.lightBlueAccent,
-      value: checkBoxState,
-      onChanged: toggleCheckBoxState,
+      value: isChecked,
+      onChanged: checkBoxCallBack,
     );
   }
 }
