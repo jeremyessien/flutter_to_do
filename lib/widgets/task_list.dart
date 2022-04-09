@@ -1,8 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'task.dart';
 import 'package:flutter_to_do/models/tasks.dart';
+
+import 'task.dart';
 
 class TaskTile extends StatefulWidget {
   @override
@@ -14,16 +15,22 @@ class _TaskTileState extends State<TaskTile> {
     Task(name: 'Buy milk', isDone: false),
     Task(name: 'Buy eggs', isDone: false),
     Task(name: 'Buy bread', isDone: false),
-
-
   ];
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder( itemBuilder: (context, index) {
-      return TaskList(isChecked: task[index].isDone, taskTitle: task[index].name);
-
-    },
-    itemCount: task.length,
+    return ListView.builder(
+      itemBuilder: (context, index) {
+        return TaskList(
+            isChecked: task[index].isDone,
+            taskTitle: task[index].name,
+            checkBoxCallBack: (checkBoxState) {
+              setState(() {
+                task[index].toggleDone();
+              });
+            });
+      },
+      itemCount: task.length,
     );
   }
 }
